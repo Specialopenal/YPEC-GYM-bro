@@ -2,6 +2,8 @@ import cv2
 import mediapipe as mp
 import numpy as np
 import time
+from gtts import gTTS
+import playsound as ps
 
 mp_pose = mp.solutions.pose
 mp_drawing = mp.solutions.drawing_utils
@@ -30,11 +32,11 @@ class LandmarkAccessor:
 
 def tts (text):
         audio = gTTS(text=text, lang="en", slow=False)
-        filename = "file" + str(filecounter) + ".mp3"
-        filecounter = filecounter + 1
+        filename = "soundfile.mp3"
         audio.save(filename)
         sysstarter = "start " + filename 
-        os.system(sysstarter)
+        ps.playsound(filename)
+        os.remove(filename)  
     
 def facing_text(lm_accessor):
     # 判斷面向
