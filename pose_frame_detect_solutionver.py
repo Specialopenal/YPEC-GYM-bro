@@ -96,8 +96,8 @@ if __name__ == '__main__':
             if not success:
                 break
 
-            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GREY)
-            results = pose.process(gray)
+            rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            results = pose.process(rgb)
             annotated_frame = frame.copy()
             h, w = frame.shape[:2]
             if results.pose_landmarks:
