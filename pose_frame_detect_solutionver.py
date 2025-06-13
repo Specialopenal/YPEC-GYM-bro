@@ -27,6 +27,15 @@ class LandmarkAccessor:
         else:
             idx = name_or_index
         return self.landmarks[idx].visibility
+
+def tts (text):
+        audio = gTTS(text=text, lang="en", slow=False)
+        filename = "file" + str(filecounter) + ".mp3"
+        filecounter = filecounter + 1
+        audio.save(filename)
+        sysstarter = "start " + filename 
+        os.system(sysstarter)
+    
 def facing_text(lm_accessor):
     # 判斷面向
     l_shldr_x, l_shldr_y = lm_accessor.get_xy(mp_pose.PoseLandmark.LEFT_SHOULDER)
